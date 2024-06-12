@@ -14,6 +14,19 @@ app.post("/add",(req,res)=>{
     cookie.save()
     res.json({"status":"success"})
 })
+app.post("/search",(req,res)=>{
+    let input = req.body
+    cookiemodel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
 app.listen(8000, ()=>{
     console.log("Server Started")
 })
