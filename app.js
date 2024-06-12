@@ -38,7 +38,17 @@ app.post("/delete",(req,res)=>{
         }
     )
 })
-
+app.post("/view",(req,res)=>{
+    cookiemodel.find().then(
+        (data)=>{
+                res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
 app.listen(8000, ()=>{
     console.log("Server Started")
 })
