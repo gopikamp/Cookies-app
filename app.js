@@ -26,6 +26,18 @@ app.post("/search",(req,res)=>{
         }
     )
 })
+app.post("/delete",(req,res)=>{
+    let input = req.body
+    cookiemodel.findByIdAndDelete(input._id).then(
+        (Response)=>{
+            res.json({"status":"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
 
 app.listen(8000, ()=>{
     console.log("Server Started")
